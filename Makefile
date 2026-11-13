@@ -16,6 +16,9 @@ PRINTF      = $(PRINTF_DIR)/libftprintf.a
 
 SRCS        = main.c \
 			  utils/push_swap_utils.c
+			  utils/parser_utils.c
+			  utils/stack_utils.c
+			  stack/stack.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
