@@ -1,0 +1,52 @@
+MAKEFLAGS   += --no-print-directory
+
+NAME        = push_swap
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -Iincludes
+
+OBJ_DIR     = obj
+INC_DIR     = includes
+HEADERS		= $(INC_DIR)/push_swap.h $(INC_DIR)/libft.h $(INC_DIR)/ft_printf.h
+
+LIBFT_DIR   = libft
+LIBFT       = $(LIBFT_DIR)/libft.a
+
+PRINTF_DIR  = ft_printf
+PRINTF      = $(PRINTF_DIR)/libftprintf.a
+
+SRCS        = main.c \
+              # to be filled
+
+OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
+
+all: $(NAME)
+
+run: all
+	@./$(NAME)
+
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
+
+$(PRINTF):
+	@$(MAKE) -C $(PRINTF_DIR)
+
+$(NAME): $(LIBFT) $(PRINTF) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(PRINTF) $(LIBFT) -o $(NAME)
+
+$(OBJ_DIR)/%.o: %.c $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(PRINTF_DIR) clean
+
+fclean: clean
+	rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(PRINTF_DIR) fclean
+
+re: fclean all
+
+.PHONY: all clean fclean re

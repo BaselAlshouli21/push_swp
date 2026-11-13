@@ -1,0 +1,14 @@
+# vscode folders
+.vscode/
+
+# .a files
+libft/libft.a
+ft_printf/libftprintf.a
+
+# build artifact
+obj/
+*.o
+*.a
+
+# executable
+push_swap
