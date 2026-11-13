@@ -20,6 +20,10 @@ SRCS        = main.c \
 			  utils/stack_utils.c \
 			  stack/stack.c
 
+########################## DELETE LATERRRRRRRRRRRRRRRRRR
+DEBUG		= debug/debug.c
+SRCS		+= $(DEBUG)
+
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 all: $(NAME)

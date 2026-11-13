@@ -6,7 +6,7 @@
 /*   By: basil42 <basil42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/13 21:51:55 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/13 22:13:43 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ typedef struct s_stack
 	int size;
 	int cap;
 }				t_stack;
+
+// *********** delete_later   ***********
+void	print_stack(t_stack *stack);
+
 
 // ***********    push_swp    ***********
 double	compute_disorder(int *stack, size_t size);
