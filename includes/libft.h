@@ -6,7 +6,7 @@
 /*   By: basil42 <basil42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/21 15:43:11 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/13 17:45:03 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/13 21:16:29 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_isspace(int c);
 
 #endif
