@@ -2,7 +2,7 @@ MAKEFLAGS   += --no-print-directory
 
 NAME        = push_swap
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -Iincludes
+CFLAGS      = -Wall -Wextra -Werror -g -Iincludes
 
 OBJ_DIR     = obj
 INC_DIR     = includes
@@ -15,14 +15,11 @@ PRINTF_DIR  = ft_printf
 PRINTF      = $(PRINTF_DIR)/libftprintf.a
 
 SRCS        = main.c \
-              # to be filled
+			  utils/push_swap_utils.c
 
 OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 all: $(NAME)
-
-run: all
-	@./$(NAME)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_DIR)
