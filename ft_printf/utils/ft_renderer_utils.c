@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_renderer_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: balshoul <balshoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: basil42 <basil42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 11:56:57 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/04 01:50:01 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/13 22:24:48 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
 size_t	get_zeros(t_data *data, size_t len)
 {

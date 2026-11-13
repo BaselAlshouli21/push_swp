@@ -6,11 +6,11 @@
 /*   By: basil42 <basil42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 00:55:14 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/04 21:48:32 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/13 22:24:30 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
 size_t	sign_size(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: basil42 <basil42@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 20:22:28 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/04 22:10:20 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/13 22:24:34 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_internal.h"
 
 static void	render_right(t_data *data, unsigned long num, size_t len,
 		const char *base)
