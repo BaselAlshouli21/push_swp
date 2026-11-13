@@ -12,7 +12,7 @@ SRCS	= \
 	ft_isascii.c \
 	ft_isdigit.c \
 	ft_isprint.c \
-	ft_isspace \
+	ft_isspace.c \
 	ft_itoa.c \
 	ft_lstadd_back.c \
 	ft_lstadd_front.c \
