@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:49:27 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 19:32:58 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 20:01:51 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ int	main(int argc, char **argv)
 	if (parse_flags(&data, &argc, &argv) || argc < 1)
 		return (error_exit(&data, ERR_INVALID_ARGS));
 	
-	if (init_stack(&data.a, argc, 0) || init_stack(&data.a, argc, 0))
+	if (init_stack(&data.a, argc, 0) || init_stack(&data.b, argc, 0))
 		return (error_exit(&data, ERR_MALLOC));
 
 	if (fill_stack(&data.a, argv))
 		return (error_exit(&data, ERR_INVALID_ARGS));
 
-	print_arr(&data.a);
+	set_stack(&data.b, 3);
+	print_stats(&data, 1);
 	return (OK);
 }
