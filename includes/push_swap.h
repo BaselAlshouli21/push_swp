@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: basil42 <basil42@student.42.fr>            +#+  +:+       +#+        */
+/*   By: balshoul <balshoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/13 22:13:43 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/14 11:29:03 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef	enum e_ps_error
 	PS_MALLOC_ERROR = -2
 }			t_ps_error;
 
+typedef enum e_algo
+{
+	ALGO_ADAPTIVE = 0,
+	ALGO_SIMPLE,
+	ALGO_INTERMEDIATE,
+	ALGO_COMPLEX
+}			t_algo;
+
 typedef struct s_stack
 {
 	int	*buff;
@@ -33,6 +41,31 @@ typedef struct s_stack
 	int size;
 	int cap;
 }				t_stack;
+
+typedef	struct s_ops
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+	int total;
+}			t_ops;
+
+typedef struct s_data
+{
+	t_stack	a;
+	t_stack	b;
+	t_ops	ops;
+	t_algo	algo;
+	int		bench_mode;
+}			t_data;
 
 // *********** delete_later   ***********
 void	print_stack(t_stack *stack);
