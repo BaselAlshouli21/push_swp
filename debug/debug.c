@@ -6,13 +6,13 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 22:09:58 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 14:19:34 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 19:30:14 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack)
+void	print_arr(t_stack *stack)
 {
 	for (int i = 0; i < stack->size; i++)
 		ft_printf("[%d]: [%d]\n", i, stack->buff[i]);
@@ -23,7 +23,7 @@ void	print_stack(t_stack *stack)
 void	print_stats(t_data *data, int mode)
 {
 	if (mode == 1)
-		print_stack(&data->a);
+		print_arr(&data->a);
 	if (data->bench_mode == 1)
 		ft_printf("bench mode: TRUE\n");
 	switch(data->algo)
