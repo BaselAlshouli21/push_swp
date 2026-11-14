@@ -15,10 +15,11 @@ PRINTF_DIR  = ft_printf
 PRINTF      = $(PRINTF_DIR)/libftprintf.a
 
 SRCS        = main.c \
+			  stack/stack.c \
+			  parser/parser.c \
 			  utils/push_swap_utils.c \
 			  utils/parser_utils.c \
 			  utils/stack_utils.c \
-			  stack/stack.c
 
 ########################## DELETE LATERRRRRRRRRRRRRRRRRR
 DEBUG		= debug/debug.c
