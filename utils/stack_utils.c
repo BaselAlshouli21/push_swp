@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 20:07:31 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 15:32:30 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 19:31:47 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	init_stack(t_stack *stack, int cap, int size)
 {
 	stack->buff = malloc(sizeof(int *) * cap);
 	if (!stack->buff)
-		return (PS_MALLOC_ERROR);
+		return (ERR_MALLOC);
 	stack->cap = cap;
 	stack->size = size;
 	stack->head = 0;
-	return (PS_OK);
+	return (OK);
 }
 
 // gets tail index

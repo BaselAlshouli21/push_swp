@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 15:25:12 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 19:32:01 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 #define INT_MAX 2147483647
 #define INT_MIN -2147483648
 
-typedef	enum e_ps_error
+typedef	enum e_error
 {
-	PS_OK = 0,
-	PS_ARGS_ERROR = -1,
-	PS_MALLOC_ERROR = -2,
-	PS_DUP_ARGS = -3
-}			t_ps_error;
+	OK = 0,
+	ERR_INVALID_ARGS = -1,
+	ERR_MALLOC = -2,
+	ERR_DUP_ARGS = -3
+}			t_error;
 
 typedef enum e_algo
 {
@@ -70,7 +70,7 @@ typedef struct s_data
 
 // *********** delete_later   ***********
 void	print_stats(t_data *data, int mode);
-void	print_stack(t_stack *stack);
+void	print_arr(t_stack *stack);
 
 
 // ***********    push_swp    ***********

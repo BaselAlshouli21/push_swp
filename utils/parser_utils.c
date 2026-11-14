@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 21:00:16 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 14:19:11 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 19:31:42 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ int	ft_atoi(const char *s, int *out)
 	n = 0;
 	sign = parse_sign(s, &i);
 	if (!ft_isdigit(s[i]))
-		return (PS_ARGS_ERROR);
+		return (ERR_INVALID_ARGS);
 	while (ft_isdigit(s[i]))
 	{
 		if (overflow(n, sign, s[i]))
-			return (PS_ARGS_ERROR);
+			return (ERR_INVALID_ARGS);
 		n = n*10 + (s[i++] - '0');
 	}
 	if (s[i] != '\0')
-		return (PS_ARGS_ERROR);
+		return (ERR_INVALID_ARGS);
 	*out = (int)(n * sign);
-	return (PS_OK);
+	return (OK);
 }

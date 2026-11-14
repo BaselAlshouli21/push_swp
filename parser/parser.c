@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 11:39:23 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/14 14:20:51 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 19:31:42 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ static int	handle_flag(t_data *data, int *found_algo, const char *arg)
 	if (is_flag(arg, "--bench"))
 	{
 		if (data->bench_mode)
-			return (PS_ARGS_ERROR);
+			return (ERR_INVALID_ARGS);
 		data->bench_mode = 1;
-		return (PS_OK);
+		return (OK);
 	}
 	algo = get_algo(arg);
 	if (algo < 0 || *found_algo)
-		return (PS_ARGS_ERROR);
+		return (ERR_INVALID_ARGS);
 	*found_algo = 1;
 	data->algo = algo;
-	return (PS_OK);
+	return (OK);
 }
 
 int	parse_flags(t_data *data, int *argc, char ***argv)
@@ -59,9 +59,9 @@ int	parse_flags(t_data *data, int *argc, char ***argv)
 	while (*argc > 0 && ft_strncmp(**argv, "--", 2) == 0)
 	{
 		if (handle_flag(data, &found_algo, **argv))
-			return (PS_ARGS_ERROR);
+			return (ERR_INVALID_ARGS);
 		(*argv)++;
 		(*argc)--;
 	}
-	return (PS_OK);
+	return (OK);
 }
