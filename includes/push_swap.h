@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 14:20:01 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 15:25:12 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef	enum e_ps_error
 {
 	PS_OK = 0,
 	PS_ARGS_ERROR = -1,
-	PS_MALLOC_ERROR = -2
+	PS_MALLOC_ERROR = -2,
+	PS_DUP_ARGS = -3
 }			t_ps_error;
 
 typedef enum e_algo
@@ -77,10 +78,13 @@ double	compute_disorder(int *stack, size_t size);
 
 
 // *********** circular stack ***********
-int		fill_stack(t_stack *stack, char **argv, int cap, int size);
+int		fill_stack(t_stack *stack, char **buff);
 
 // utils
-void	init_stack(t_stack *stack, int *buffer, int cap, int size);
+void	set_stack(t_stack *stack, int n);
+int		init_stack(t_stack *stack, int cap, int size);
+int		search_stack(t_stack *stack, int n);
+int		get_tail(t_stack *stack);
 
 
 // ***********     parser     ***********

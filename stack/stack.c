@@ -6,30 +6,29 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 20:21:32 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 14:18:56 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 15:43:36 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	fill_stack(t_stack *stack, char **argv, int cap, int size)
+int	fill_stack(t_stack *stack, char **buff)
 {
-	int	*arr;
 	int	i;
+	int	value;
 
-	arr = malloc(sizeof(int) * cap);
-	if (!arr)
-		return (PS_MALLOC_ERROR);
 	i = 0;
-	while (size > i)
+	while (buff[i])
 	{
-		if (ft_atoi(argv[i], &arr[i]))
-		{
-			free(arr);
+		if (stack->size >= stack->cap)
 			return (PS_ARGS_ERROR);
-		}
+		if (ft_atoi(buff[i], &value) != PS_OK)
+			return (PS_ARGS_ERROR);
+		if (search_stack(stack, value) != -1)
+			return (PS_DUP_ARGS);
+		stack->buff[(stack->head + stack->size) % stack->cap] = value;
+		stack->size++;
 		i++;
 	}
-	init_stack(stack, arr, cap, size);
 	return (PS_OK);
 }
