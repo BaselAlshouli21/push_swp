@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 12:32:36 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 12:40:34 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_data
 }			t_data;
 
 // *********** delete_later   ***********
+void	print_stats(t_data *data, int mode);
 void	print_stack(t_stack *stack);
 
 
