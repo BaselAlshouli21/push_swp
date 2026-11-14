@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 20:07:31 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 19:31:47 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 20:03:15 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // initalize the stack
 int	init_stack(t_stack *stack, int cap, int size)
 {
-	stack->buff = malloc(sizeof(int *) * cap);
+	stack->buff = malloc(sizeof(int) * cap);
 	if (!stack->buff)
 		return (ERR_MALLOC);
 	stack->cap = cap;
@@ -35,13 +35,11 @@ int	get_tail(t_stack *stack)
 // set all elements in the stack to n from head to tail
 void	set_stack(t_stack *stack, int n)
 {
-	int	head;
-	int	tail_idx;
+	int	i;
 	
-	head = stack->head;
-	tail_idx = get_tail(stack);
-	while (tail_idx > (head % stack->cap))
-		stack->buff[head++] = n;
+	i = 0;
+	while (stack->cap > i)
+		stack->buff[i++] = n;
 }
 
 // search stack
