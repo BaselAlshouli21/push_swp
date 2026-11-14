@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 11:29:03 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/14 12:32:36 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	init_stack(t_stack *stack, int *buffer, int cap, int size);
 
 
 // ***********     parser     ***********
+int		parse_flags(t_data *data, int *argc, char ***argv);
 
 // utils
 int		ft_atoi(const char *s, int *out);
