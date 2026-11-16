@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 21:54:16 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 23:18:00 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,12 @@ int		parse_flags(t_data *data, int *argc, char ***argv);
 
 // utils
 int		ft_atoi(const char *s, int *out);
+
+
+// ***********   operations   ***********
+// swap
+void	swap_a(t_data *data);
+void	swap_b(t_data *data);
+void	swap_s(t_data *data);
 
 #endif
