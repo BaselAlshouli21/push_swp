@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 19:00:22 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 15:59:46 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 16:34:45 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ double	compute_disorder(int *stack, size_t size)
 	return ((double)mistakes / (double)total_pairs);
 }
 
-void	print_disorder(double disorder)
+void	print_disorder(t_data *data)
 {
 	int	scaled;
 	int	whole;
 	int	frac;
 
-	scaled = (int)(disorder * 10000 + 0.5);
+	scaled = (int)(data->disorder * 10000 + 0.5);
 	whole = scaled / 100;
 	frac = scaled % 100;
 

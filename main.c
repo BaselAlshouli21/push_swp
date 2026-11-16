@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:49:27 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 16:30:40 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 16:39:37 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main(int argc, char **argv)
 
 	if (fill_stack(&data.a, argv))
 		return (error_exit(&data, ERR_INVALID_ARGS));
-
+		
+	data.disorder = compute_disorder(data.a.buff, data.a.size);
 	set_stack(&data.b, 3);
 	print_stats(&data, 1);
 	return (OK);

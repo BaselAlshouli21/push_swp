@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 15:56:15 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 16:35:22 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_data
 	t_ops	ops;
 	t_algo	algo;
 	int		bench_mode;
+	double	disorder;
 }			t_data;
 
 // *********** delete_later   ***********
@@ -79,7 +80,7 @@ void	print_stacks(t_data *data);
 
 // utils
 double	compute_disorder(int *stack, size_t size);
-void	print_disorder(double disorder);
+void	print_disorder(t_data *data);
 
 
 // *********** circular stack ***********

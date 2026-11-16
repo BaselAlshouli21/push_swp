@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 22:09:58 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 15:59:58 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 16:34:13 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	print_stats(t_data *data, int mode)
 {
 	if (mode == 1)
 		print_stacks(data);
-	print_disorder(compute_disorder(data->a.buff, data->a.size));
+	print_disorder(data);
 	if (data->bench_mode == 1)
 		ft_printf("bench mode : [TRUE]\n");
 	else
