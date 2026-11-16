@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 16:35:22 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 21:54:16 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ typedef	enum e_error
 	OK = 0,
 	ERR_INVALID_ARGS = -1,
 	ERR_MALLOC = -2,
-	ERR_DUP_ARGS = -3
+	ERR_DUP_ARGS = -3,
+	ERR_SORTED_STACK = -4
 }			t_error;
 
 typedef enum e_algo
@@ -87,9 +88,10 @@ void	print_disorder(t_data *data);
 int		fill_stack(t_stack *stack, char **buff);
 
 // utils
-void	set_stack(t_stack *stack, int n);
 int		init_stack(t_stack *stack, int cap, int size);
 int		search_stack(t_stack *stack, int n);
+void	set_stack(t_stack *stack, int n);
+int		stack_at(t_stack *stack, int i);
 int		get_tail(t_stack *stack);
 
 

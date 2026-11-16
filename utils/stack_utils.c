@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 20:07:31 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 20:03:15 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 22:00:41 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,10 @@ int		search_stack(t_stack *stack, int n)
 		i++;
 	}
 	return (-1);
+}
+
+// get the stack value at index i
+int		stack_at(t_stack *stack, int i)
+{
+	return (stack->buff[(stack->head + i) % stack->cap]);
 }
