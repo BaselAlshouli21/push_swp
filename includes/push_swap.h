@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 20:09:33 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/16 15:56:15 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ void	print_stacks(t_data *data);
 
 
 // ***********    push_swp    ***********
+
+
+// utils
 double	compute_disorder(int *stack, size_t size);
+void	print_disorder(double disorder);
 
 
 // *********** circular stack ***********
