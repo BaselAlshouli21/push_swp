@@ -20,6 +20,10 @@ SRCS        = main.c \
 			  utils/push_swap_utils.c \
 			  utils/parser_utils.c \
 			  utils/stack_utils.c \
+			  operations/swap.c \
+			  operations/push.c \
+			  operations/rotate.c \
+			  operations/reverse_rotate.c \
 
 ########################## DELETE LATERRRRRRRRRRRRRRRRRR
 DEBUG		= debug/debug.c
