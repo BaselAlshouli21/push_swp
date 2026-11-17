@@ -6,47 +6,31 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 11:39:23 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/14 19:31:42 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 18:10:50 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_flag(const char *arg, const char *flag)
+static int	count_words(const char *str, char sep)
 {
-	return (ft_strncmp(arg, flag, ft_strlen(flag) + 1) == 0);
-}
+	int	count;
+	int	in_word;
 
-static int	get_algo(const char *arg)
-{
-	if (is_flag(arg, "--adaptive"))
-		return (ALGO_ADAPTIVE);
-	if (is_flag(arg, "--simple"))
-		return (ALGO_SIMPLE);
-	if (is_flag(arg, "--medium"))
-		return (ALGO_INTERMEDIATE);
-	if (is_flag(arg, "--complex"))
-		return (ALGO_COMPLEX);
-	return (-1);
-}
-
-static int	handle_flag(t_data *data, int *found_algo, const char *arg)
-{
-	int	algo;
-
-	if (is_flag(arg, "--bench"))
+	count = 0;
+	in_word = 0;
+	while (*str)
 	{
-		if (data->bench_mode)
-			return (ERR_INVALID_ARGS);
-		data->bench_mode = 1;
-		return (OK);
+		if (*str != sep && !in_word)
+		{
+			in_word = 1;
+			count++;
+		}
+		else if (*str == sep)
+			in_word = 0;
+		str++;
 	}
-	algo = get_algo(arg);
-	if (algo < 0 || *found_algo)
-		return (ERR_INVALID_ARGS);
-	*found_algo = 1;
-	data->algo = algo;
-	return (OK);
+	return (count);
 }
 
 int	parse_flags(t_data *data, int *argc, char ***argv)
@@ -62,6 +46,47 @@ int	parse_flags(t_data *data, int *argc, char ***argv)
 			return (ERR_INVALID_ARGS);
 		(*argv)++;
 		(*argc)--;
+	}
+	return (OK);
+}
+
+int	expand_args(int *argc, char **argv)
+{
+	int	i;
+	int	words;
+
+	i = 0;
+	while (argv[i])
+	{
+		words = count_words(argv[i], ' ');
+		if (words == 0)
+			return (ERR_INVALID_ARGS);
+		*argc += words - 1;
+		i++;
+	}
+	return (OK);
+}
+
+int	parse_args(t_stack *stack, char **argv)
+{
+	char	**tokens;
+	int		status;
+	int		i;
+
+	i = 0;
+	while (argv[i])
+	{
+		tokens = ft_split(argv[i], ' ');
+		if (!tokens || !tokens[0])
+		{
+			free_split(tokens);
+			return (ERR_INVALID_ARGS);
+		}
+		status = fill_stack(stack, tokens);
+		free_split(tokens);
+		if (status != OK)
+			return (status);
+		i++;
 	}
 	return (OK);
 }

@@ -6,58 +6,57 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 21:00:16 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/14 19:31:42 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 18:11:23 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	overflow(long n, int sign, char next_digit)
+int	is_flag(const char *arg, const char *flag)
 {
-	long val;
-	val = (n * 10) + (next_digit - '0');
-	if (sign == 1 && val > INT_MAX)
-		return (1);
-	if (sign == -1 && (-val) < INT_MIN)
-		return (1);
-	return (0);
+	return (ft_strncmp(arg, flag, ft_strlen(flag) + 1) == 0);
 }
 
-static int	parse_sign(const char *s, int *i)
+int	get_algo(const char *arg)
 {
-	int sign;
-
-	sign = 1;
-	while (ft_isspace(s[*i]))
-		(*i)++;
-	if (s[*i] == '-' || s[*i] == '+')
-	{
-		if (s[*i] == '-')
-			sign = -1;
-		(*i)++;
-	}
-	return (sign);
+	if (is_flag(arg, "--adaptive"))
+		return (ALGO_ADAPTIVE);
+	if (is_flag(arg, "--simple"))
+		return (ALGO_SIMPLE);
+	if (is_flag(arg, "--medium"))
+		return (ALGO_INTERMEDIATE);
+	if (is_flag(arg, "--complex"))
+		return (ALGO_COMPLEX);
+	return (-1);
 }
 
-int	ft_atoi(const char *s, int *out)
+int	handle_flag(t_data *data, int *found_algo, const char *arg)
 {
-	long	n;
-	int		i;
-	int		sign;
+	int	algo;
 
-	i = 0;
-	n = 0;
-	sign = parse_sign(s, &i);
-	if (!ft_isdigit(s[i]))
-		return (ERR_INVALID_ARGS);
-	while (ft_isdigit(s[i]))
+	if (is_flag(arg, "--bench"))
 	{
-		if (overflow(n, sign, s[i]))
+		if (data->bench_mode)
 			return (ERR_INVALID_ARGS);
-		n = n*10 + (s[i++] - '0');
+		data->bench_mode = 1;
+		return (OK);
 	}
-	if (s[i] != '\0')
+	algo = get_algo(arg);
+	if (algo < 0 || *found_algo)
 		return (ERR_INVALID_ARGS);
-	*out = (int)(n * sign);
+	*found_algo = 1;
+	data->algo = algo;
 	return (OK);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+	
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }

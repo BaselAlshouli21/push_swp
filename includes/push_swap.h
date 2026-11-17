@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/17 13:53:26 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 18:11:14 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # include "libft.h"
 # include "ft_printf.h"
-
-#define INT_MAX 2147483647
-#define INT_MIN -2147483648
 
 typedef	enum e_error
 {
@@ -30,7 +27,7 @@ typedef	enum e_error
 
 typedef enum e_algo
 {
-	ALGO_ADAPTIVE = 0,
+	ALGO_ADAPTIVE,
 	ALGO_SIMPLE,
 	ALGO_INTERMEDIATE,
 	ALGO_COMPLEX
@@ -78,10 +75,16 @@ void	print_stacks(t_data *data);
 
 // *********** circular stack ***********
 int		fill_stack(t_stack *stack, char **buff);
-
+int		find_min(t_stack *stack);
 
 // ***********     parser     ***********
 int		parse_flags(t_data *data, int *argc, char ***argv);
+int		parse_args(t_stack *stack, char **argv);
+int		expand_args(int *argc, char **argv);
+
+
+// ***********      sort      ***********
+void	selection_sort(t_data *data);
 
 
 // ***********   operations   ***********
@@ -106,11 +109,14 @@ void	reverse_rotate_r(t_data *data);
 
 
 // ***********   utilities   ***********
-// parser
-int		ft_atoi(const char *s, int *out);
-
 // sort
 void	sort_three(t_data *data);
+
+// parser
+int		handle_flag(t_data *data, int *found_algo, const char *arg);
+int		is_flag(const char *arg, const char *flag);
+int		get_algo(const char *arg);
+void	free_split(char **split);
 
 // push_swp
 double	compute_disorder(int *stack, size_t size);
