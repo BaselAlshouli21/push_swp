@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 23:18:00 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 00:14:14 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,9 @@ int		ft_atoi(const char *s, int *out);
 void	swap_a(t_data *data);
 void	swap_b(t_data *data);
 void	swap_s(t_data *data);
+
+// push
+void	push_a(t_data *data);
+void	push_b(t_data *data);
 
 #endif
