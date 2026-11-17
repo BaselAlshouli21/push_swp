@@ -6,26 +6,32 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 22:09:58 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 16:34:13 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 13:53:14 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_arr(t_stack *stack, char name)
+void	print_stack(t_stack *stack, char name)
 {
 	int	i;
-	int	tail_idx;
-	
-	tail_idx = (stack->head + stack->size - 1) % stack->cap;
-	ft_printf("stack [%c] \n", name);
-	ft_printf("head_idx=%d, tail_idx=%d, size=%d, cap=%d):\n[ ",
-		stack->head, tail_idx, stack->size, stack->cap);
+	int	tail;
+
+	tail = get_tail(stack);
+	ft_printf("stack [%c] (head=%d, tail=%d, size=%d/%d)\n  logical: [ ",
+		name, stack->head, tail, stack->size, stack->cap);
 	i = 0;
-	while (stack->cap > i)
+	while (i < stack->size)
+		ft_printf("%d ", stack_at(stack, i++));
+	ft_printf("]\n  raw_buf: [ ");
+	i = 0;
+	while (i < stack->cap)
 	{
-		ft_printf("%d ", stack->buff[i]);
-		i++;
+		if (i == stack->head && stack->size > 0)
+			ft_printf("H:");
+		if (i == tail)
+			ft_printf("T:");
+		ft_printf("%d ", stack->buff[i++]);
 	}
 	ft_printf("]\n");
 }
@@ -33,9 +39,9 @@ void	print_arr(t_stack *stack, char name)
 void	print_stacks(t_data *data)
 {
 	ft_printf("\n");
-	print_arr(&data->a, 'a');
+	print_stack(&data->a, 'a');
 	ft_printf("\n");
-	print_arr(&data->b, 'b');
+	print_stack(&data->b, 'b');
 	ft_printf("\n");
 }
 
