@@ -18,21 +18,24 @@ STACK		= stack/stack.c
 
 PARSER		= parser/parser.c
 
-UTILS		= utils/push_swap_utils.c \
-			  utils/parser_utils.c \
-			  utils/stack_utils.c \
-			  utils/sort_utils.c \
+SORT		= sort/simple/selection_sort.c \
 
 OPERATIONS	= operations/swap.c \
 			  operations/push.c \
 			  operations/rotate.c \
 			  operations/reverse_rotate.c \
 
+UTILS		= utils/push_swap_utils.c \
+			  utils/parser_utils.c \
+			  utils/stack_utils.c \
+			  utils/sort_utils.c \
+
 SRCS        = main.c \
 			  $(STACK) \
 			  $(PARSER) \
 			  $(UTILS) \
-			  $(OPERATIONS)
+			  $(OPERATIONS) \
+			  $(SORT)
 
 			  
 			  
