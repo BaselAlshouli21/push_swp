@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 12:40:35 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/17 13:02:04 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 13:41:47 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	rotate_a(t_data *data)
     if (rotate_up(&data->a))
         return ;
     data->ops.ra++;
+    data->ops.total++;
     ft_printf("ra\n");
 }
 
@@ -37,6 +38,7 @@ void	rotate_b(t_data *data)
     if (rotate_up(&data->b))
         return ;
     data->ops.rb++;
+    data->ops.total++;
     ft_printf("rb\n");
 }
 
@@ -50,6 +52,7 @@ void	rotate_r(t_data *data)
     if (ra == OK || rb == OK)
     {
         data->ops.rr++;
+        data->ops.total++;
         ft_printf("rr\n");
     }
 }

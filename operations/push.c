@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 23:24:20 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/17 12:36:51 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 13:41:31 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	push_a(t_data *data)
     if (push(&data->b, &data->a))
     	return ;
     data->ops.pa++;
+    data->ops.total++;
     ft_printf("pa\n");
 }
 
@@ -44,5 +45,6 @@ void	push_b(t_data *data)
     if (push(&data->a, &data->b))
     	return ;
     data->ops.pb++;
+    data->ops.total++;
     ft_printf("pb\n");
 }
