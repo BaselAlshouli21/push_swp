@@ -5,6 +5,7 @@ NAME	= libft.a
 OBJ_DIR	= obj
 
 SRCS	= \
+	ft_atoi.c \
 	ft_bzero.c \
 	ft_calloc.c \
 	ft_isalnum.c \
