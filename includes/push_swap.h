@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/17 13:05:25 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 13:32:27 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,12 @@ void	print_stats(t_data *data, int mode);
 void	print_stacks(t_data *data);
 
 
-// ***********    push_swp    ***********
-
-
-// utils
-double	compute_disorder(int *stack, size_t size);
-void	print_disorder(t_data *data);
-
-
 // *********** circular stack ***********
 int		fill_stack(t_stack *stack, char **buff);
-
-// utils
-int		init_stack(t_stack *stack, int cap, int size);
-int		search_stack(t_stack *stack, int n);
-void	set_stack(t_stack *stack, int n);
-int		stack_at(t_stack *stack, int i);
-int		get_tail(t_stack *stack);
 
 
 // ***********     parser     ***********
 int		parse_flags(t_data *data, int *argc, char ***argv);
-
-// utils
-int		ft_atoi(const char *s, int *out);
 
 
 // ***********   operations   ***********
@@ -121,5 +103,25 @@ void	rotate_r(t_data *data);
 void	reverse_rotate_a(t_data *data);
 void	reverse_rotate_b(t_data *data);
 void	reverse_rotate_r(t_data *data);
+
+
+// ***********   utilities   ***********
+// parser
+int		ft_atoi(const char *s, int *out);
+
+// sort
+void	sort_three(t_data *data);
+
+// push_swp
+double	compute_disorder(int *stack, size_t size);
+void	print_disorder(t_data *data);
+
+// stack
+int		init_stack(t_stack *stack, int cap, int size);
+int		search_stack(t_stack *stack, int n);
+void	set_stack(t_stack *stack, int n);
+int		stack_at(t_stack *stack, int i);
+int		get_tail(t_stack *stack);
+
 
 #endif
