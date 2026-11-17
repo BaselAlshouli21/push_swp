@@ -14,16 +14,28 @@ LIBFT       = $(LIBFT_DIR)/libft.a
 PRINTF_DIR  = ft_printf
 PRINTF      = $(PRINTF_DIR)/libftprintf.a
 
-SRCS        = main.c \
-			  stack/stack.c \
-			  parser/parser.c \
-			  utils/push_swap_utils.c \
+STACK		= stack/stack.c
+
+PARSER		= parser/parser.c
+
+UTILS		= utils/push_swap_utils.c \
 			  utils/parser_utils.c \
 			  utils/stack_utils.c \
-			  operations/swap.c \
+			  utils/sort_utils.c \
+
+OPERATIONS	= operations/swap.c \
 			  operations/push.c \
 			  operations/rotate.c \
 			  operations/reverse_rotate.c \
+
+SRCS        = main.c \
+			  $(STACK) \
+			  $(PARSER) \
+			  $(UTILS) \
+			  $(OPERATIONS)
+
+			  
+			  
 
 ########################## DELETE LATERRRRRRRRRRRRRRRRRR
 DEBUG		= debug/debug.c
