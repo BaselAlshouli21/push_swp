@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/17 00:14:14 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/17 13:05:25 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,15 @@ void	swap_s(t_data *data);
 // push
 void	push_a(t_data *data);
 void	push_b(t_data *data);
+
+// rotate
+void	rotate_a(t_data *data);
+void	rotate_b(t_data *data);
+void	rotate_r(t_data *data);
+
+// reverse rotate
+void	reverse_rotate_a(t_data *data);
+void	reverse_rotate_b(t_data *data);
+void	reverse_rotate_r(t_data *data);
 
 #endif
