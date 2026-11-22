@@ -19,6 +19,7 @@ STACK		= stack/stack.c
 PARSER		= parser/parser.c
 
 SORT		= sort/simple/selection_sort.c \
+			  sort/medium/chunk_sort.c
 
 OPERATIONS	= operations/swap.c \
 			  operations/push.c \

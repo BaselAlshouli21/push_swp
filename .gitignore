@@ -9,6 +9,12 @@ ft_printf/libftprintf.a
 obj/
 *.o
 *.a
+*.txt
 
 # executable
 push_swap
+
+# debug
+debug/debug.txt
+test_chunk.sh
+checker_linux
