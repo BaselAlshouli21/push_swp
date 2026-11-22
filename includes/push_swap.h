@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/17 18:11:14 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/22 15:57:03 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int		expand_args(int *argc, char **argv);
 
 // ***********      sort      ***********
 void	selection_sort(t_data *data);
+void	chunk_sort(t_data *data);
 
 
 // ***********   operations   ***********
@@ -110,6 +111,8 @@ void	reverse_rotate_r(t_data *data);
 
 // ***********   utilities   ***********
 // sort
+void	reverse_rotate_n(t_data *data, char name, int n);
+void	rotate_n(t_data *data, char name, int n);
 void	sort_three(t_data *data);
 
 // parser

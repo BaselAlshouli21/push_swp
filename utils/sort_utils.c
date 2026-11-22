@@ -6,11 +6,39 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 13:10:50 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/17 13:38:55 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/22 15:24:38 by balshoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rotate_n(t_data *data, char name, int n)
+{
+    if (name == 'a')
+    {
+        while (n--)
+            rotate_a(data);
+    }
+    else
+    {
+        while (n--)
+            rotate_b(data);
+    }
+}
+
+void	reverse_rotate_n(t_data *data, char name, int n)
+{
+    if (name == 'a')
+    {
+		while (n--)
+			reverse_rotate_a(data);
+    }
+    else
+    {
+        while (n--)
+			reverse_rotate_b(data);
+    }
+}
 
 void	sort_three(t_data *data)
 {
