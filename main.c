@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:49:27 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 16:39:37 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/25 22:50:19 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,17 @@ int	main(int argc, char **argv)
 	argv++;
 	
 	ft_bzero(&data, sizeof(t_data));
-
 	if (parse_flags(&data, &argc, &argv) || argc < 1)
 		return (error_exit(&data, ERR_INVALID_ARGS));
-	
+	if (expand_args(&argc, argv))
+		return (error_exit(&data, ERR_INVALID_ARGS));
 	if (init_stack(&data.a, argc, 0) || init_stack(&data.b, argc, 0))
 		return (error_exit(&data, ERR_MALLOC));
-
-	if (fill_stack(&data.a, argv))
+	if (parse_args(&data.a, argv))
 		return (error_exit(&data, ERR_INVALID_ARGS));
 		
 	data.disorder = compute_disorder(data.a.buff, data.a.size);
-	set_stack(&data.b, 3);
-	print_stats(&data, 1);
+	turk_sort(&data);
+	print_stacks(&data);
 	return (OK);
 }

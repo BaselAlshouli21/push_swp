@@ -6,7 +6,7 @@
 /*   By: basil42 <balshoul@student.42amman.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/24 19:52:33 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/24 20:48:07 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/25 23:51:25 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,43 +40,91 @@ static int	find_target(t_stack *b, int val)
 	return (target_idx);
 }
 
-static int	calculate_cost(t_data *data, int a_idx, int b_idx)
+static void find_cheapest(t_data *data, t_bmove *best_mv)
 {
-	int	a_half;
-	int	b_half;
-	int	a_cost;
-	int	b_cost;
+	t_bmove	min_move;
+	int		a_idx;
+	int		b_idx;
+	
+	a_idx = 0;
+	min_move.cost = INT_MAX;
+	while (a_idx < data->a.size)
+	{
+		b_idx = find_target(&data->b, stack_at(&data->a, a_idx));
+		*best_mv = calculate_cost(data, a_idx, b_idx);
+		if (best_mv->cost < min_move.cost)
+			min_move = *best_mv;
+		a_idx++;
+	}
+	*best_mv = min_move;
+}
 
-	a_half = data->a.size / 2;
-	b_half = data->b.size / 2;
-	a_cost = a_idx;
-	b_cost = b_idx;
-	if (b_idx <=  b_half && a_idx <= a_half)
-		return (biggest(a_cost, b_cost));
-	else if (b_idx > b_half && a_idx > a_half)
+
+
+static void	put_on_top(t_data *data, t_bmove *best_mv)
+{
+	t_rotations r;
+	int			cost;
+
+	r = best_mv->r;
+	cost = best_mv->cost;
+	if (r == BOTH_R)
+		rotate_r_n(data, cost);
+	else if (r == BOTH_RR)
+		reverse_rotate_r_n(data, cost);
+	else if (r == AR_BRR)
 	{
-		a_cost = data->a.size - a_idx;
-		b_cost = data->b.size - b_half;
-		return (biggest(a_cost, b_cost));
+		rotate_n(data, 'a', best_mv->a_move);
+		reverse_rotate_n(data, 'b', best_mv->b_move);
 	}
-	else
+	else if (r == ARR_BR)
 	{
-		if (a_idx >= a_half)
-			b_cost = data->a.size - a_idx;
-		if (b_idx >= b_half)
-			b_cost = data->b.size - b_idx;
+		rotate_n(data, 'b', best_mv->b_move);
+		reverse_rotate_n(data, 'a', best_mv->a_move);
 	}
-	return (a_cost + b_cost);
+}
+
+static void	move_to_a(t_data *data, int *min_idx)
+{
+	int	cheapest;
+	int	val;
+
+	while (data->b.size > 0)
+	{
+		val = stack_at(&data->b, 0);
+		cheapest = smallest_biggest(&data->a, val, min_idx);
+		if (cheapest <= data->a.size / 2)
+			rotate_n(data, 'a', cheapest);
+		else
+			reverse_rotate_n(data, 'a', data->a.size - cheapest);
+		if (data->b.size == 1)
+			*min_idx = (*min_idx - cheapest + data->a.size) % data->a.size;
+		push_a(data);
+	}
 }
 
 void turk_sort(t_data *data)
 {
-	for (int i = 0; i < data->a.size; i++)
+	t_bmove best_mv;
+	int		min_idx;
+
+	push_b(data);
+	push_b(data);
+	min_idx = 0;
+	while (data->a.size > 3)
 	{
-		int a_val = stack_at(&data->a, i);
-		int target = find_target(&data->b, a_val);
-		ft_printf("num: %d ", a_val);
-		ft_printf("target: %d ", stack_at(&data->b, target));
-		ft_printf("cost: %d\n", calculate_cost(data, i, target));
+		find_cheapest(data, &best_mv);
+		put_on_top(data, &best_mv);
+		push_b(data);
 	}
+	sort_three(data);
+	move_to_a(data, &min_idx);
+	if (stack_at(&data->a, min_idx + 1) > stack_at(&data->a, 0))
+		min_idx = 0;
+	else
+		min_idx++;
+	if (min_idx <= data->a.size / 2)
+		rotate_n(data, 'a', min_idx);
+	else
+		reverse_rotate_n(data, 'a', data->a.size - min_idx);
 }
