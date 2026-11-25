@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 20:21:32 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/17 17:21:16 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/25 19:44:51 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,22 @@ int	find_min(t_stack *stack)
         i++;
     }
     return (min_idx);
+}
+
+int	find_max(t_stack *s)
+{
+	int	max_idx;
+	int	i;
+
+	if (s->size == 0)
+		return (-1);
+	max_idx = 0;
+	i = 0;
+	while(i < s->size)
+	{
+		if (stack_at(s, i) > stack_at(s, max_idx))
+			max_idx = i;
+		i++;
+	}
+	return (max_idx);
 }
