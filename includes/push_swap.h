@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/22 15:57:03 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/24 19:07:47 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	print_stacks(t_data *data);
 // *********** circular stack ***********
 int		fill_stack(t_stack *stack, char **buff);
 int		find_min(t_stack *stack);
+int		find_max(t_stack *s);
 
 // ***********     parser     ***********
 int		parse_flags(t_data *data, int *argc, char ***argv);
@@ -86,7 +87,7 @@ int		expand_args(int *argc, char **argv);
 // ***********      sort      ***********
 void	selection_sort(t_data *data);
 void	chunk_sort(t_data *data);
-
+void	turk_sort(t_data *data);
 
 // ***********   operations   ***********
 // swap
@@ -124,6 +125,9 @@ void	free_split(char **split);
 // push_swp
 double	compute_disorder(int *stack, size_t size);
 void	print_disorder(t_data *data);
+int		absolute(int n);
+int		biggest(int a, int b);
+int		smallest(int a, int b);
 
 // stack
 int		init_stack(t_stack *stack, int cap, int size);
