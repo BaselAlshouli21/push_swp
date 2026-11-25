@@ -26,6 +26,7 @@ OPERATIONS	= operations/swap.c \
 			  operations/push.c \
 			  operations/rotate.c \
 			  operations/reverse_rotate.c \
+			  operations/n_times.c \
 
 UTILS		= utils/push_swap_utils.c \
 			  utils/parser_utils.c \
