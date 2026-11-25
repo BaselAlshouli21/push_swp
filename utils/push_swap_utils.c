@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 19:00:22 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/16 16:34:45 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/25 19:48:50 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,25 @@ void	print_disorder(t_data *data)
 	frac = scaled % 100;
 
 	ft_printf("disorder   : %d.%d%%\n", whole, frac);
+}
+
+int	absolute(int n)
+{
+	if (n < 0)
+		return (n * -1);
+	return (n);
+}
+
+int	biggest(int a, int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
+}
+
+int	smallest(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }
