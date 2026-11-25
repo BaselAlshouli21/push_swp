@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/24 19:07:47 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/25 23:32:03 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libft.h"
 # include "ft_printf.h"
+
+# define INT_MAX 2147483647
 
 typedef	enum e_error
 {
@@ -32,6 +34,23 @@ typedef enum e_algo
 	ALGO_INTERMEDIATE,
 	ALGO_COMPLEX
 }			t_algo;
+
+typedef enum e_rotations
+{
+	BOTH_R,
+	BOTH_RR,
+	AR_BRR,
+	ARR_BR
+}			t_rotations;
+
+typedef struct s_bmove
+{
+	t_rotations	r;
+	int			a_move;
+	int			b_move;
+	int			cost;
+	
+}			t_bmove;
 
 typedef struct s_stack
 {
@@ -108,12 +127,19 @@ void	rotate_r(t_data *data);
 void	reverse_rotate_a(t_data *data);
 void	reverse_rotate_b(t_data *data);
 void	reverse_rotate_r(t_data *data);
+void	try_move(int a, int b, int *best, t_bmove *best_mv);
+
+// n_times
+void	reverse_rotate_n(t_data *data, char name, int n);
+void	rotate_n(t_data *data, char name, int n);
+void	reverse_rotate_r_n(t_data *data, int n);
+void	rotate_r_n(t_data *data, int n);
 
 
 // ***********   utilities   ***********
 // sort
-void	reverse_rotate_n(t_data *data, char name, int n);
-void	rotate_n(t_data *data, char name, int n);
+int		smallest_biggest(t_stack *a, int val, int *min_idx);
+t_bmove	calculate_cost(t_data *data, int a_idx, int b_idx);
 void	sort_three(t_data *data);
 
 // parser
