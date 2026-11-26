@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:49:27 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/25 22:50:19 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/26 22:15:44 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,18 @@ static int	error_exit(t_data *data, int e)
 {
 	free(data->a.buff);
 	free(data->b.buff);
-	write(2, "Error\n", 6);
 	if (e == ERR_INVALID_ARGS)
+	{
 		return (ERR_INVALID_ARGS);
+		write(2, "Error\n", 6);
+	}
 	if (e == ERR_MALLOC)
+	{
 		return (ERR_MALLOC);
+		write(2, "Error\n", 6);
+	}
+	if (e == ERR_SORTED_STACK)
+		return (ERR_SORTED_STACK);
 	return (OK);
 }
 
@@ -41,9 +48,8 @@ int	main(int argc, char **argv)
 		return (error_exit(&data, ERR_MALLOC));
 	if (parse_args(&data.a, argv))
 		return (error_exit(&data, ERR_INVALID_ARGS));
-		
-	data.disorder = compute_disorder(data.a.buff, data.a.size);
-	turk_sort(&data);
-	ft_putnbr_fd(data.ops.total, 2);
+	if (sort_dispatcher(&data))
+		return (error_exit(&data, ERR_SORTED_STACK));
+	bench(&data);
 	return (OK);
 }

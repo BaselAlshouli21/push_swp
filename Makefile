@@ -18,9 +18,12 @@ STACK		= stack/stack.c
 
 PARSER		= parser/parser.c
 
+BENCH		= bench/bench.c
+
 SORT		= sort/simple/selection_sort.c \
 			  sort/medium/chunk_sort.c \
-			  sort/complex/turk_sort.c
+			  sort/complex/turk_sort.c \
+			  sort/sort_dispatcher.c
 
 OPERATIONS	= operations/swap.c \
 			  operations/push.c \
@@ -34,12 +37,13 @@ UTILS		= utils/push_swap_utils.c \
 			  utils/sort_utils.c \
 			  utils/turk_utils.c \
 
-SRCS        = main.c \
-			  $(STACK) \
+SRCS        = $(OPERATIONS) \
 			  $(PARSER) \
+			  $(STACK) \
 			  $(UTILS) \
-			  $(OPERATIONS) \
-			  $(SORT)
+			  $(BENCH) \
+			  $(SORT) \
+			  main.c
 
 			  
 			  
