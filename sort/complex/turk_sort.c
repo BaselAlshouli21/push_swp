@@ -59,19 +59,40 @@ static void find_cheapest(t_data *data, t_bmove *best_mv)
 	*best_mv = min_move;
 }
 
+static void	put_both(t_data *data, t_bmove *best_mv, t_rotations r)
+{
+	char	big_name;
+	int		smaller;
+	int		bigger;
 
+	smaller = best_mv->b_move;
+	bigger = best_mv->a_move;
+	big_name = 'a';
+	if (best_mv->a_move < best_mv->b_move)
+	{
+		smaller = best_mv->a_move;
+		bigger = best_mv->b_move;
+		big_name = 'b';
+	}
+	if (r == BOTH_R)
+	{
+		rotate_r_n(data, smaller);
+		rotate_n(data, big_name, bigger - smaller);
+	}
+	else
+	{
+		reverse_rotate_r_n(data, smaller);
+		reverse_rotate_n(data, big_name, bigger - smaller);
+	}
+}
 
 static void	put_on_top(t_data *data, t_bmove *best_mv)
 {
 	t_rotations r;
-	int			cost;
 
 	r = best_mv->r;
-	cost = best_mv->cost;
-	if (r == BOTH_R)
-		rotate_r_n(data, cost);
-	else if (r == BOTH_RR)
-		reverse_rotate_r_n(data, cost);
+	if (r == BOTH_R || r == BOTH_RR)
+		put_both(data, best_mv, best_mv->r);
 	else if (r == AR_BRR)
 	{
 		rotate_n(data, 'a', best_mv->a_move);
