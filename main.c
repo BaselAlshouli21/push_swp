@@ -44,6 +44,6 @@ int	main(int argc, char **argv)
 		
 	data.disorder = compute_disorder(data.a.buff, data.a.size);
 	turk_sort(&data);
-	print_stacks(&data);
+	ft_putnbr_fd(data.ops.total, 2);
 	return (OK);
 }

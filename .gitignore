@@ -16,5 +16,5 @@ push_swap
 
 # debug
 debug/debug.txt
-test_chunk.sh
+bench.sh
 checker_linux
