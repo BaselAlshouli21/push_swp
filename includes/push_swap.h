@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/25 23:32:03 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/26 22:14:51 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include "ft_printf.h"
 
 # define INT_MAX 2147483647
+
+# define SIMPLE "O(n^2)"
+# define MEDIUM "O(n\xe2\x88\x9an)"
+# define COMPLEX "O(n log n)"
 
 typedef	enum e_error
 {
@@ -82,8 +86,10 @@ typedef struct s_data
 	t_stack	b;
 	t_ops	ops;
 	t_algo	algo;
-	int		bench_mode;
 	double	disorder;
+	char	*complexity;
+	int		bench_mode;
+	int		adaptive;
 }			t_data;
 
 // *********** delete_later   ***********
@@ -104,6 +110,7 @@ int		expand_args(int *argc, char **argv);
 
 
 // ***********      sort      ***********
+int		sort_dispatcher(t_data *data);
 void	selection_sort(t_data *data);
 void	chunk_sort(t_data *data);
 void	turk_sort(t_data *data);
@@ -135,6 +142,8 @@ void	rotate_n(t_data *data, char name, int n);
 void	reverse_rotate_r_n(t_data *data, int n);
 void	rotate_r_n(t_data *data, int n);
 
+// bench
+void	bench(t_data *data);
 
 // ***********   utilities   ***********
 // sort
