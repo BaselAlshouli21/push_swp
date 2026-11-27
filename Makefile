@@ -20,24 +20,32 @@ PARSER		= parser/parser.c
 
 BENCH		= bench/bench.c
 
+OPTIMIZER	= optimizer/optimizer.c \
+			  optimizer/rotation.c \
+			  optimizer/pairs.c \
+
 SORT		= sort/simple/selection_sort.c \
 			  sort/medium/chunk_sort.c \
 			  sort/complex/turk_sort.c \
 			  sort/sort_dispatcher.c
 
-OPERATIONS	= operations/swap.c \
-			  operations/push.c \
-			  operations/rotate.c \
-			  operations/reverse_rotate.c \
+OPERATIONS	= operations/reverse_rotate.c \
 			  operations/n_times.c \
+			  operations/rotate.c \
+			  operations/push.c \
+			  operations/swap.c \
 
 UTILS		= utils/push_swap_utils.c \
+			  utils/rotation_utils.c \
+			  utils/optimizer_utils.c \
 			  utils/parser_utils.c \
 			  utils/stack_utils.c \
+			  utils/error_utils.c \
 			  utils/sort_utils.c \
 			  utils/turk_utils.c \
 
 SRCS        = $(OPERATIONS) \
+			  $(OPTIMIZER) \
 			  $(PARSER) \
 			  $(STACK) \
 			  $(UTILS) \
