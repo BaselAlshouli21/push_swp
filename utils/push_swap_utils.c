@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 19:00:22 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/25 19:48:50 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/27 00:01:24 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ double	compute_disorder(int *stack, size_t size)
 }
 
 void	print_disorder(t_data *data)
-{
+{ 
 	int	scaled;
 	int	whole;
 	int	frac;
@@ -57,18 +57,4 @@ int	absolute(int n)
 	if (n < 0)
 		return (n * -1);
 	return (n);
-}
-
-int	biggest(int a, int b)
-{
-	if (a < b)
-		return (b);
-	return (a);
-}
-
-int	smallest(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
 }

@@ -6,11 +6,25 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 13:10:50 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/25 22:40:59 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/26 23:22:59 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	biggest(int a, int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
+}
+
+int	smallest(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
 
 void	sort_three(t_data *data)
 {
