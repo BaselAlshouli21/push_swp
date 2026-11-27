@@ -38,7 +38,7 @@ static void	sort_adaptive(t_data *data)
 int	sort_dispatcher(t_data *data)
 {
 	data->disorder = compute_disorder(data->a.buff, data->a.size);
-    if (data->disorder == 0.0)
+    if (data->disorder == 0.0 && data->bench_mode == 0)
     	return (ERR_SORTED_STACK);
     if (data->algo == ALGO_SIMPLE)
     	selection_sort(data);

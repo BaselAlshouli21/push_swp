@@ -6,7 +6,7 @@
 /*   By: basil42 <balshoul@student.42amman.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/26 20:34:52 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/26 22:03:23 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/27 01:47:03 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,41 +61,41 @@ static void	second_line(t_data *data)
 	ft_putchar_fd('\n', 2);
 }
 
-static void	third_line(t_ops ops)
+static void	third_line(t_cops cops)
 {
 	line_start();
 	ft_putstr_fd("total_ops:   ", 2);
-	ft_putnbr_fd(ops.total, 2);
+	ft_putnbr_fd(cops.total, 2);
 	ft_putchar_fd('\n', 2);
 }
 
-static void	operations(t_ops ops)
+static void	operations(t_cops cops)
 {
 	line_start();
 	ft_putstr_fd("sa:   ", 2);
-	ft_putnbr_fd(ops.sa, 2);
+	ft_putnbr_fd(cops.count[SA], 2);
 	ft_putstr_fd("   sb:   ", 2);
-	ft_putnbr_fd(ops.sb, 2);
+	ft_putnbr_fd(cops.count[SB], 2);
 	ft_putstr_fd("   ss:   ", 2);
-	ft_putnbr_fd(ops.ss, 0);
+	ft_putnbr_fd(cops.count[SS], 2);
 	ft_putstr_fd("   pa:   ", 2);
-	ft_putnbr_fd(ops.pa, 2);
+	ft_putnbr_fd(cops.count[PA], 2);
 	ft_putstr_fd("   pb:   ", 2);	
-	ft_putnbr_fd(ops.pb, 2);
+	ft_putnbr_fd(cops.count[PB], 2);
 	ft_putchar_fd('\n', 2);
 	line_start();
 	ft_putstr_fd("ra:   ", 2);
-	ft_putnbr_fd(ops.ra, 2);
+	ft_putnbr_fd(cops.count[RA], 2);
 	ft_putstr_fd("   rb:   ", 2);
-	ft_putnbr_fd(ops.rb, 2);
+	ft_putnbr_fd(cops.count[RB], 2);
 	ft_putstr_fd("   rr:   ", 2);
-	ft_putnbr_fd(ops.rr, 2);
+	ft_putnbr_fd(cops.count[RR], 2);
 	ft_putstr_fd("   rra:   ", 2);
-	ft_putnbr_fd(ops.rra, 2);
+	ft_putnbr_fd(cops.count[RRA], 2);
 	ft_putstr_fd("   rrb:   ", 2);
-	ft_putnbr_fd(ops.rrb, 2);
+	ft_putnbr_fd(cops.count[RRB], 2);
 	ft_putstr_fd("   rrr:   ", 2);
-	ft_putnbr_fd(ops.rrr, 2);
+	ft_putnbr_fd(cops.count[RRR], 2);
 }
 
 void	bench(t_data *data)
@@ -104,6 +104,6 @@ void	bench(t_data *data)
 		return ;
 	first_line(data->disorder);
 	second_line(data);
-	third_line(data->ops);
-	operations(data->ops);
+	third_line(data->lops.cops);
+	operations(data->lops.cops);
 }
