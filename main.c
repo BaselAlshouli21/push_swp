@@ -6,30 +6,11 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:49:27 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/26 22:15:44 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/27 03:50:49 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	error_exit(t_data *data, int e)
-{
-	free(data->a.buff);
-	free(data->b.buff);
-	if (e == ERR_INVALID_ARGS)
-	{
-		return (ERR_INVALID_ARGS);
-		write(2, "Error\n", 6);
-	}
-	if (e == ERR_MALLOC)
-	{
-		return (ERR_MALLOC);
-		write(2, "Error\n", 6);
-	}
-	if (e == ERR_SORTED_STACK)
-		return (ERR_SORTED_STACK);
-	return (OK);
-}
 
 int	main(int argc, char **argv)
 {
@@ -50,6 +31,12 @@ int	main(int argc, char **argv)
 		return (error_exit(&data, ERR_INVALID_ARGS));
 	if (sort_dispatcher(&data))
 		return (error_exit(&data, ERR_SORTED_STACK));
-	bench(&data);
+	if (data.malloc_err)
+		return (error_exit(&data, ERR_MALLOC));
+	optimizer(&data);
+	recount_ops(&data.lops);
+	print_ops(&data.lops);
+	ft_putnbr_fd(data.lops.cops.total, 2);
+	free_mal(&data);
 	return (OK);
 }
