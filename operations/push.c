@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 23:24:20 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/17 13:41:31 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/27 00:38:23 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,18 @@ static int	push(t_stack *src, t_stack *dest)
 // take first element of b and push into a
 void	push_a(t_data *data)
 {
-    if (push(&data->b, &data->a))
-    	return ;
-    data->ops.pa++;
-    data->ops.total++;
-    ft_printf("pa\n");
+	if (push(&data->b, &data->a))
+		return ;
+	if (add_op(&data->lops, PA))
+		data->malloc_err = 1;
 }
 
 
 // take first element of a and push into b
 void	push_b(t_data *data)
 {
-    if (push(&data->a, &data->b))
-    	return ;
-    data->ops.pb++;
-    data->ops.total++;
-    ft_printf("pb\n");
+	if (push(&data->a, &data->b))
+		return ;
+	if (add_op(&data->lops, PB))
+		data->malloc_err = 1;
 }

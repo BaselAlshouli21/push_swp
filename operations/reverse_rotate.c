@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 12:55:17 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/17 13:41:59 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/27 00:45:38 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,17 @@ static int	rotate_down(t_stack *stack)
 void	reverse_rotate_a(t_data *data)
 {
     if (rotate_down(&data->a))
-        return ;
-    data->ops.rra++;
-    data->ops.total++;
-    ft_printf("rra\n");
+		return ;
+	if (add_op(&data->lops, RRA))
+		data->malloc_err = 1;
 }
 
 void	reverse_rotate_b(t_data *data)
 {
     if (rotate_down(&data->b))
-        return ;
-    data->ops.rrb++;
-    data->ops.total++;
-    ft_printf("rrb\n");
+		return ;
+	if (add_op(&data->lops, RRB))
+		data->malloc_err = 1;
 }
 
 void	reverse_rotate_r(t_data *data)
@@ -49,10 +47,8 @@ void	reverse_rotate_r(t_data *data)
 
     rra = rotate_down(&data->a);
     rrb = rotate_down(&data->b);
-    if (rra == OK || rrb == OK)
-    {
-        data->ops.rrr++;
-        data->ops.total++;
-        ft_printf("rrr\n");
-    }
+    if (rra != OK && rrb != OK)
+		return ;
+	if (add_op(&data->lops, RRR))
+		data->malloc_err = 1;
 }

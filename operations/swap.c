@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/16 22:47:27 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/17 13:41:09 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/27 00:41:48 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,16 @@ void	swap_a(t_data *data)
 {
     if (swap_stack(&data->a))
     	return ;
-    data->ops.sa++;
-    data->ops.total++;
-    ft_printf("sa\n");
+    if (add_op(&data->lops, SA))
+		data->malloc_err = 1;
 }
 
 void	swap_b(t_data *data)
 {
-    if (swap_stack(&data->b))
-    	return ;
-    data->ops.sb++;
-    data->ops.total++;
-    ft_printf("sb\n");
+	if (swap_stack(&data->b))
+		return ;
+	if (add_op(&data->lops, SB))
+		data->malloc_err = 1;
 }
 
 void	swap_s(t_data *data)
@@ -51,8 +49,8 @@ void	swap_s(t_data *data)
 
     sa = swap_stack(&data->a);
     sb = swap_stack(&data->b);
-    data->ops.ss += (sa == OK || sb == OK);
-    data->ops.total += (sa == OK || sb == OK);
-    if (sa == OK || sb == OK)
-    	ft_printf("ss\n");
+    if (sa != OK && sb != OK)
+		return ;
+	if (add_op(&data->lops, SS))
+		data->malloc_err = 1;
 }

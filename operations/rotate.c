@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/17 12:40:35 by balshoul          #+#    #+#             */
-/*   Updated: 2026/11/17 13:41:47 by balshoul         ###   ########.fr       */
+/*   Updated: 2026/11/27 00:43:57 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,17 @@ static int	rotate_up(t_stack *stack)
 void	rotate_a(t_data *data)
 {
     if (rotate_up(&data->a))
-        return ;
-    data->ops.ra++;
-    data->ops.total++;
-    ft_printf("ra\n");
+		return ;
+	if (add_op(&data->lops, RA))
+		data->malloc_err = 1;
 }
 
 void	rotate_b(t_data *data)
 {
     if (rotate_up(&data->b))
-        return ;
-    data->ops.rb++;
-    data->ops.total++;
-    ft_printf("rb\n");
+		return ;
+	if (add_op(&data->lops, RB))
+		data->malloc_err = 1;
 }
 
 void	rotate_r(t_data *data)
@@ -49,10 +47,8 @@ void	rotate_r(t_data *data)
 
     ra = rotate_up(&data->a);
     rb = rotate_up(&data->b);
-    if (ra == OK || rb == OK)
-    {
-        data->ops.rr++;
-        data->ops.total++;
-        ft_printf("rr\n");
-    }
+    if (ra != OK && rb != OK)
+		return ;
+	if (add_op(&data->lops, RR))
+		data->malloc_err = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: balshoul <balshoul@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 17:13:12 by basil42           #+#    #+#             */
-/*   Updated: 2026/11/26 22:14:51 by basil42          ###   ########.fr       */
+/*   Updated: 2026/11/27 03:48:40 by basil42          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 # include "libft.h"
 # include "ft_printf.h"
 
+#define OPS_MAX 12000
+
 # define INT_MAX 2147483647
 
 # define SIMPLE "O(n^2)"
 # define MEDIUM "O(n\xe2\x88\x9an)"
 # define COMPLEX "O(n log n)"
+
 
 typedef	enum e_error
 {
@@ -47,6 +50,22 @@ typedef enum e_rotations
 	ARR_BR
 }			t_rotations;
 
+typedef enum e_eops
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+	OP_COUNT
+}			t_eops;
+
 typedef struct s_bmove
 {
 	t_rotations	r;
@@ -64,32 +83,37 @@ typedef struct s_stack
 	int cap;
 }				t_stack;
 
-typedef	struct s_ops
+typedef struct s_llist
 {
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
+	struct s_llist	*next;
+	struct s_llist	*prev;
+	t_eops			ops;
+}			t_llist;
+
+typedef struct s_cops
+{
+	int count[OP_COUNT];
 	int total;
-}			t_ops;
+}			t_cops;
+
+typedef struct s_lops 
+{
+	t_llist	*head;
+	t_llist	*tail;
+	t_cops	cops;
+}			t_lops;
 
 typedef struct s_data
 {
 	t_stack	a;
 	t_stack	b;
-	t_ops	ops;
+	t_lops	lops;
 	t_algo	algo;
 	double	disorder;
 	char	*complexity;
 	int		bench_mode;
 	int		adaptive;
+	int		malloc_err;
 }			t_data;
 
 // *********** delete_later   ***********
@@ -131,10 +155,10 @@ void	rotate_b(t_data *data);
 void	rotate_r(t_data *data);
 
 // reverse rotate
+void	try_move(int a, int b, int *best, t_bmove *best_mv);
 void	reverse_rotate_a(t_data *data);
 void	reverse_rotate_b(t_data *data);
 void	reverse_rotate_r(t_data *data);
-void	try_move(int a, int b, int *best, t_bmove *best_mv);
 
 // n_times
 void	reverse_rotate_n(t_data *data, char name, int n);
@@ -144,6 +168,17 @@ void	rotate_r_n(t_data *data, int n);
 
 // bench
 void	bench(t_data *data);
+
+
+// ***********   optimizer   ***********
+int		scan_run(t_llist *node, int *a, int *b);
+t_llist *rotations(t_lops *l, t_llist *node);
+t_llist	*pairs(t_lops *l, t_llist *node);
+int		shared_count(int a, int b);
+void	optimizer(t_data *data);
+int		new_len(int a, int b);
+int		is_rot(t_eops op);
+
 
 // ***********   utilities   ***********
 // sort
@@ -160,9 +195,9 @@ void	free_split(char **split);
 // push_swp
 double	compute_disorder(int *stack, size_t size);
 void	print_disorder(t_data *data);
-int		absolute(int n);
-int		biggest(int a, int b);
 int		smallest(int a, int b);
+int		biggest(int a, int b);
+int		absolute(int n);
 
 // stack
 int		init_stack(t_stack *stack, int cap, int size);
@@ -171,5 +206,14 @@ void	set_stack(t_stack *stack, int n);
 int		stack_at(t_stack *stack, int i);
 int		get_tail(t_stack *stack);
 
+// error_exit
+int		error_exit(t_data *data, t_error e);
+void	free_mal(t_data *data);
+
+// optimizer
+void	remove_node(t_lops *l, t_llist *node);
+int		add_op(t_lops *l, t_eops op);
+void	recount_ops(t_lops *l);
+void	print_ops(t_lops *l);
 
 #endif
